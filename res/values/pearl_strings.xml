@@ -264,5 +264,9 @@ Notifications may be delayed for these apps."</string>
     <!-- PearlOS version preference -->
     <string name="pearl_version">"PearlOS version"</string>
     <string name="build_date">"Build date"</string>
+	
+	<!-- Quick unlock -->
+    <string name="unlock_quick_unlock_control_title">Quick unlock</string>
+    <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
 
 </resources>
