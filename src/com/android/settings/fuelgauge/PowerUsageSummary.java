@@ -27,6 +27,7 @@ import android.content.DialogInterface;
 import android.content.Loader;
 import android.os.BatteryStats;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.SearchIndexableResource;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.preference.Preference;
@@ -53,6 +54,7 @@ import com.android.settings.fuelgauge.anomaly.AnomalyDetectionPolicy;
 import com.android.settings.fuelgauge.batterytip.BatteryTipLoader;
 import com.android.settings.fuelgauge.batterytip.BatteryTipPreferenceController;
 import com.android.settings.fuelgauge.batterytip.tips.BatteryTip;
+import com.android.settings.graph.UsageView;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -132,6 +134,12 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
                     mBatteryHeaderPreferenceController.updateHeaderPreference(batteryInfo);
                     mBatteryInfo = batteryInfo;
                     updateLastFullChargePreference();
+                    Handler h = new Handler();
+                        h.postDelayed(() -> {
+                            UsageView usageView = (UsageView) mBatteryLayoutPref.findViewById(R.id.battery_usage);
+                            usageView.findViewById(R.id.label_group).setAlpha(.7f);
+                            mBatteryInfo.bindHistory(usageView);
+                        }, 300);
                 }
 
                 @Override
