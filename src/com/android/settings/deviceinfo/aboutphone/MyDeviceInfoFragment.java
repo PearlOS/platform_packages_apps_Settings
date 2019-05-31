@@ -21,36 +21,16 @@ import static com.android.settings.bluetooth.Utils.getLocalBtManager;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.text.TextUtils;
-import android.os.UserHandle;
-import android.os.Handler;
-import android.os.UserManager;
-import android.os.SystemProperties;
-import android.os.SELinux;
-import android.os.Bundle;
-import android.os.StatFs;
-import android.os.Environment;
-import java.io.File;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.content.pm.ResolveInfo;
-import android.widget.TextView;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
-import android.util.Pair;
+import android.app.Dialog; 
+import android.app.DialogFragment; import android.app.Fragment; 
+import android.app.FragmentManager; import android.app.FragmentTransaction; import android.content.ComponentName; import android.content.Context; import 
+android.content.Intent; import android.media.MediaPlayer; import android.text.TextUtils; import android.os.UserHandle; import android.os.Handler; import 
+android.os.UserManager; import android.os.SystemProperties; import android.os.SELinux; import android.os.Bundle; import android.os.StatFs; import 
+android.os.Environment; import android.os.Vibrator; import java.io.File; import android.view.LayoutInflater; import android.view.ViewGroup; import 
+android.view.View; import android.widget.FrameLayout; import android.widget.ImageView; import 
+android.content.pm.ResolveInfo; import android.widget.TextView; import android.widget.ArrayAdapter; import android.widget.Toast; import android.util.Pair; 
 import android.util.Log;
+import android.view.View.OnLongClickListener;
 
 import com.android.settings.Utils;
 import com.android.settings.R;
@@ -66,8 +46,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static android.content.Context.VIBRATOR_SERVICE;
+
 public class MyDeviceInfoFragment extends Fragment
-             implements View.OnClickListener{
+             implements View.OnClickListener, OnLongClickListener {
 
     static String aprox;
     private String device;
@@ -80,6 +62,12 @@ public class MyDeviceInfoFragment extends Fragment
     private final int TAPS_FOR_EASTER = 11;
     private Toast mTapToast;
     private int mEasterCountdown = TAPS_FOR_EASTER;
+
+//RanndomShit
+    String[] lolz;
+    private final int TAPS_FOR_FUN = 5;
+    private int mLolCount = TAPS_FOR_FUN;
+    private Vibrator mVibrator;
 
     public Context mContext;
 
@@ -101,6 +89,8 @@ public class MyDeviceInfoFragment extends Fragment
          // Create an ArrayAdapter that will contain all list items
          ArrayAdapter<String> adapter;
          keks = mContext.getResources().getStringArray(R.array.kek_tap);
+	 lolz = mContext.getResources().getStringArray(R.array.lol_tap);
+         mVibrator = (Vibrator) getContext().getSystemService(VIBRATOR_SERVICE);
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.aboutphone, container, false);
@@ -187,15 +177,19 @@ public class MyDeviceInfoFragment extends Fragment
 
         //Add click listeners
         if (view != null) {
+            cardview1 = view.findViewById(R.id.cardview1);
             cardview2 = view.findViewById(R.id.cardview2);
             cardview3 = view.findViewById(R.id.cardview3);
             cardview4 = view.findViewById(R.id.cardview4);
         }
         if (cardview3 != null && cardview4 != null) {
+            cardview1.setOnClickListener(this);
+            cardview1.setOnLongClickListener(this);
             cardview2.setOnClickListener(this);
             cardview3.setOnClickListener(this);
             cardview4.setOnClickListener(this);
         }
+
         if (phone != null) {
             phone.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -213,7 +207,11 @@ public class MyDeviceInfoFragment extends Fragment
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            
+
+	case R.id.cardview1:
+            loltaps();
+            break;
+
         case R.id.cardview4:
             kektaps();
             break;
@@ -233,6 +231,15 @@ public class MyDeviceInfoFragment extends Fragment
         }
     }
 
+    @Override
+    public boolean onLongClick(View v) {
+       if (R.id.cardview1 == v.getId()) {
+              show_me();
+              mVibrator.vibrate(100);
+        }
+        return false;
+    }
+
     public static void showDialog(Fragment context, DialogFragment dialog) {
         FragmentTransaction ft = context.getChildFragmentManager().beginTransaction();
         Fragment prev = context.getChildFragmentManager().findFragmentByTag("dialog");
@@ -249,7 +256,7 @@ public class MyDeviceInfoFragment extends Fragment
         ft.addToBackStack(null);
         ft.commit();
     }
-    
+
     public void kektaps() {
         if (mEasterCountdown -1 > 0) {
              if (mTapToast != null) {
@@ -260,17 +267,37 @@ public class MyDeviceInfoFragment extends Fragment
              mEasterCountdown--;
              if (mEasterCountdown -1 == 0) {
                  mEasterCountdown++;
-                 showeasteregg();
+		 showeasteregg();
              }
         }
     }
-    
+
+    public void loltaps() {
+        if (mLolCount -1 > 0) {
+             if (mTapToast != null) {
+                 mTapToast.cancel();
+                 mTapToast = null;
+             }
+             lol_toasts();
+             mLolCount--;
+             if (mLolCount -1 == 0) {
+                 mLolCount++;
+             }
+        }
+    }
+
     public void toasts() {
         mTapToast= Toast.makeText(mContext, keks[11 - mEasterCountdown],
                mTapToast.LENGTH_SHORT);
         mTapToast.show();
     }
-    
+
+    public void lol_toasts() {
+        mTapToast= Toast.makeText(mContext, lolz[6 - mLolCount],
+               mTapToast.LENGTH_LONG);
+        mTapToast.show();
+    }
+
     public void showeasteregg() {
          if (mTapToast != null) {
               mTapToast.cancel();
@@ -283,6 +310,24 @@ public class MyDeviceInfoFragment extends Fragment
          LayoutInflater inflater = (LayoutInflater) mContext
                  .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
          view = inflater.inflate(R.layout.dialog_aqua, null);
+         builder.setView(view);
+         builder.setCancelable(true);
+         AlertDialog alertdialog = builder.create();
+         alertdialog.show();
+     }
+
+    public void show_me() {
+         if (mTapToast != null) {
+              mTapToast.cancel();
+         }
+         mTapToast = mTapToast.makeText(mContext, "Cheers!",
+               mTapToast.LENGTH_SHORT);
+         mTapToast.show();
+         View view = null;
+         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+         LayoutInflater inflater = (LayoutInflater) mContext
+                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+         view = inflater.inflate(R.layout.lay_on_carmel, null);
          builder.setView(view);
          builder.setCancelable(true);
          AlertDialog alertdialog = builder.create();

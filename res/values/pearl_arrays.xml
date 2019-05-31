@@ -39,4 +39,11 @@
         <item>@string/kek11</item>
     </string-array>
 
+    <string-array name="lol_tap" translatable="false">
+        <item>@string/l1</item>
+        <item>@string/l2</item>
+        <item>@string/l3</item>
+        <item>@string/l4</item>
+        <item>@string/l5</item>
+    </string-array>
 </resources>

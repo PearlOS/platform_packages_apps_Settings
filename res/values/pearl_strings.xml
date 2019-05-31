@@ -112,4 +112,11 @@
     <!-- Updater -->
     <string name="pearl_updater_title">System Updater</string>
     <string name="pearl_updater_summary">Pearl System Updater</string>
+
+   <!-- Fun -->
+    <string name="l1">When you least expect it, Nature has cunning ways of finding weakest spot!</string>
+    <string name="l2">You have to keep breaking your heart until it opens</string> 
+    <string name="l3">Sometimes laughter is not best medicine, It can be best disguise</string>  
+    <string name="l4">Want to commit double suicide with me?</string>
+    <string name="l5">Nothing is more beautiful than a Smile, that has struggled through tears</string> 
 </resources>
