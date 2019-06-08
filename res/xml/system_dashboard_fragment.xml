@@ -52,7 +52,7 @@
     <!-- About us -->
     <Preference
         android:key="pearl_about_info"
-        android:order="0"
+        android:order="-2000"
         android:title="@string/pearl_about_info"
         android:fragment="com.android.settings.AboutUs" />
 
