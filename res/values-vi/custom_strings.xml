@@ -90,6 +90,8 @@ Thông báo có thể bị chậm trễ đối với những ứng dụng này."
     <string name="refresh_rate_summary_60">60Hz / Tốc độ làm mới bị khóa ở 60Hz cho tất cả nội dung</string>
     <string name="refresh_rate_summary_90">90Hz / Tốc độ làm mới bị khóa ở 90Hz cho tất cả nội dung.  Tăng mức sử dụng pin</string>
     <string name="auto_refresh_rate">Tự động</string>
+<<<<<<< HEAD:res/values-vi/custom_strings.xml
     <!-- Battery light -->
     <string name="battery_light_title">Bật đèn khi sạc</string>
+
 </resources>
