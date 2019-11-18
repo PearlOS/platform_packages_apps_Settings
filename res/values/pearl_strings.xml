@@ -261,5 +261,8 @@ Notifications may be delayed for these apps."</string>
     <string name="adj_saturation_title">Saturation</string>
     <string name="adj_intensity_title">Intensity</string>
     <string name="adj_contrast_title">Contrast</string>
+	
+	<!-- Back gesture animation -->
+    <string name="back_gesture_arrow_message">Show an animated arrow for back gesture.</string>
 
 </resources>
