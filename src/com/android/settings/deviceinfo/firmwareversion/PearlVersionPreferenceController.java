@@ -33,8 +33,8 @@ import com.android.settings.core.BasePreferenceController;
 public class PearlVersionPreferenceController extends BasePreferenceController {
 
     private static final Uri INTENT_URI_DATA = Uri.parse("https://github.com/PearlOS/");
-    private static final String TAG = "durexDialogCtrl";
-    private static final PEARL_VERSION_PROPERTY = "ro.pearl.version";
+    private static final String TAG = "pearlDialogCtrl";
+    private static final String PEARL_VERSION_PROPERTY = "ro.pearl.version";
     private final PackageManager mPackageManager = this.mContext.getPackageManager();
 
     public PearlVersionPreferenceController(Context context, String preferenceKey) {
@@ -48,7 +48,7 @@ public class PearlVersionPreferenceController extends BasePreferenceController {
     public CharSequence getSummary() {
         String pearl = SystemProperties.get(PEARL_VERSION_PROPERTY,
                 mContext.getString(R.string.device_info_default));
-        return durex;
+        return pearl;
     }
 
     public boolean handlePreferenceTreeClick(Preference preference) {
