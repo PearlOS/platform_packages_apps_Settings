@@ -3301,5 +3301,25 @@
         </activity>
 
         <!-- This is the longest AndroidManifest.xml ever. -->
+
+        <!-- Start of our manifest entries -->
+
+        <!-- Shell -->
+        <activity android:name=".Settings$ShellSettingsActivity"
+                  android:label="@string/shell_settings_title"
+                  android:icon="@drawable/ic_settings_shell"
+                  android:parentActivityName="com.android.settings">
+            <intent-filter android:priority="69">
+                <action android:name="android.intent.action.SHELL_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />    
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.shell.settings.ShellSettings"/>
+        </activity>
+
     </application>
 </manifest>

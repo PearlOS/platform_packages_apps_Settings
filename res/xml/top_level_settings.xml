@@ -39,6 +39,14 @@
         settings:controller="com.android.settings.connecteddevice.TopLevelConnectedDevicesPreferenceController"/>
 
     <Preference
+        android:key="top_level_shell_settings"
+        android:title="@string/shell_settings_title"
+        android:summary="@string/shell_settings_summary"
+        android:icon="@drawable/ic_homepage_shell"
+        android:order="-105"
+        android:fragment="com.shell.settings.ShellSettings"/>
+
+    <Preference
         android:key="top_level_apps_and_notifs"
         android:title="@string/app_and_notification_dashboard_title"
         android:summary="@string/app_and_notification_dashboard_summary"
