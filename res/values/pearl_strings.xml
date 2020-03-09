@@ -326,4 +326,8 @@ Notifications may be delayed for these apps."</string>
     <string name="others_settings_title">Others settings</string>
     <string name="additional_buttons_title">Additional buttons</string>
 
+    <!-- Navigation compact layout -->
+    <string name="navigation_bar_compact_layout_title">Compact layout</string>
+    <string name="navigation_bar_compact_layout_summary">Use a compact layout in the navigation bar</string>
+
 </resources>
