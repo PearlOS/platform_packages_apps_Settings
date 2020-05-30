@@ -344,4 +344,7 @@ Notifications may be delayed for these apps."</string>
 
     <string name="battery_temp">Battery temperature</string>
 
+    <!-- Pearl Maintainer -->
+    <string name="maintainer">Maintainer</string>
+
 </resources>
