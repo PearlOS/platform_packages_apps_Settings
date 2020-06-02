@@ -42,6 +42,7 @@ public class PearlVersionDetailPreferenceController extends BasePreferenceContro
     private static final int ACTIVITY_TRIGGER_COUNT = 3;
 
     private static final String KEY_PEARL_VERSION_PROP = "ro.pearl.version";
+    private static final String KEY_PEARL_BUILDTYPE_PROP = "ro.pearl.build_type";
 
     private final UserManager mUserManager;
     private final long[] mHits = new long[ACTIVITY_TRIGGER_COUNT];
@@ -63,7 +64,7 @@ public class PearlVersionDetailPreferenceController extends BasePreferenceContro
     @Override
     public CharSequence getSummary() {
         return SystemProperties.get(KEY_PEARL_VERSION_PROP,
-                mContext.getString(R.string.unknown));
+                mContext.getString(R.string.unknown))  + " | " + SystemProperties.get(KEY_PEARL_BUILDTYPE_PROP, mContext.getString(R.string.unknown));
     }
 
     @Override
